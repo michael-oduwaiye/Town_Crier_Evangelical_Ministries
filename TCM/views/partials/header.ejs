@@ -1,0 +1,336 @@
+<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 shrink-0">
+      <div class="bg-[#6B46C1] h-10 w-10 flex items-center justify-center rounded-xl text-white font-bold text-xl shadow-md">
+        TC
+      </div>
+      <span class="text-gray-900 font-bold text-xl tracking-tight">Town Crier</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-2">
+      <a
+        href="/"
+        class="px-5 py-2 rounded-xl font-medium transition <%= currentPath === '/' ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 hover:text-[#6B46C1]' %>"
+      >
+        Home
+      </a>
+
+      <a
+        href="/about"
+        class="px-5 py-2 rounded-xl font-medium transition <%= currentPath === '/about' ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 hover:text-[#6B46C1]' %>"
+      >
+        About
+      </a>
+
+      <!-- Connect -->
+      <div class="relative group">
+        <button
+          type="button"
+          class="flex items-center gap-1 px-5 py-2 rounded-xl font-medium transition <%= ['/events', '/contact'].includes(currentPath) ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 group-hover:text-[#6B46C1]' %>"
+        >
+          Connect
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div class="absolute left-0 top-full pt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden">
+            <a href="/events" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-[#6B46C1]">
+              Events
+            </a>
+            <a href="/contact" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-[#6B46C1] border-t border-gray-50">
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ministries -->
+      <div class="relative group">
+        <button
+          type="button"
+          class="flex items-center gap-1 px-5 py-2 rounded-xl font-medium transition <%= ['/ministries/dbw', '/ministries/bootcamp', '/ministries/arrows'].includes(currentPath) ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 group-hover:text-[#6B46C1]' %>"
+        >
+          Ministries
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div class="absolute left-0 top-full pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden">
+            <a href="/ministries/dbw" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-[#6B46C1]">
+              Discipleship by the Word
+            </a>
+            <a href="/ministries/bootcamp" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-[#6B46C1] border-t border-gray-50">
+              Discipleship Bootcamp
+            </a>
+            <a href="/ministries/arrows" class="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-[#6B46C1] border-t border-gray-50">
+              Arrows in the Quiver
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Desktop Right Side -->
+    <div class="hidden md:flex items-center gap-3">
+      <% if (!isLoggedIn) { %>
+        <a
+          href="/hub"
+          class="bg-[#6B46C1] text-white px-7 py-3 rounded-full font-bold hover:bg-purple-700 transition shadow-md whitespace-nowrap"
+        >
+          DBW HUB
+        </a>
+      <% } else { %>
+        <a
+          href="/hub"
+          class="rounded-full border border-gray-200 bg-white px-5 py-3 font-semibold text-gray-800 hover:border-[#6B46C1] hover:text-[#6B46C1] transition whitespace-nowrap"
+        >
+          <% if (currentUser && currentUser.name) { %>
+            <%= currentUser.name.split(' ')[0] %>'s Hub
+          <% } else { %>
+            My Hub
+          <% } %>
+        </a>
+
+        <% if (isAdmin) { %>
+          <a
+            href="/admin"
+            class="rounded-full bg-[#6B46C1] text-white px-5 py-3 font-bold hover:bg-purple-700 transition shadow-md whitespace-nowrap"
+          >
+            Admin Dashboard
+          </a>
+        <% } %>
+
+        <button
+          type="button"
+          id="desktop-logout-btn"
+          class="rounded-full border border-red-200 bg-white px-5 py-3 font-semibold text-red-600 hover:bg-red-50 transition whitespace-nowrap"
+        >
+          Logout
+        </button>
+      <% } %>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-button"
+      type="button"
+      class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+
+      <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white shadow-lg">
+    <div class="px-4 py-4 space-y-2">
+
+      <a
+        href="/"
+        class="block rounded-xl px-4 py-3 font-medium transition <%= currentPath === '/' ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 hover:bg-gray-50' %>"
+      >
+        Home
+      </a>
+
+      <a
+        href="/about"
+        class="block rounded-xl px-4 py-3 font-medium transition <%= currentPath === '/about' ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 hover:bg-gray-50' %>"
+      >
+        About
+      </a>
+
+      <!-- Mobile Connect -->
+      <details class="group rounded-xl border border-gray-100 overflow-hidden" <%= ['/events', '/contact'].includes(currentPath) ? 'open' : '' %>>
+        <summary class="list-none cursor-pointer px-4 py-3 flex items-center justify-between font-medium transition <%= ['/events', '/contact'].includes(currentPath) ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 hover:bg-gray-50' %>">
+          <span>Connect</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+
+        <div class="bg-white border-t border-gray-100">
+          <a
+            href="/events"
+            class="block px-6 py-3 transition <%= currentPath === '/events' ? 'text-[#6B46C1] bg-purple-50/60 font-medium' : 'text-gray-700 hover:bg-gray-50' %>"
+          >
+            Events
+          </a>
+          <a
+            href="/contact"
+            class="block px-6 py-3 transition border-t border-gray-50 <%= currentPath === '/contact' ? 'text-[#6B46C1] bg-purple-50/60 font-medium' : 'text-gray-700 hover:bg-gray-50' %>"
+          >
+            Contact
+          </a>
+        </div>
+      </details>
+
+      <!-- Mobile Ministries -->
+      <details class="group rounded-xl border border-gray-100 overflow-hidden" <%= ['/ministries/dbw', '/ministries/bootcamp', '/ministries/arrows'].includes(currentPath) ? 'open' : '' %>>
+        <summary class="list-none cursor-pointer px-4 py-3 flex items-center justify-between font-medium transition <%= ['/ministries/dbw', '/ministries/bootcamp', '/ministries/arrows'].includes(currentPath) ? 'bg-purple-50 text-[#6B46C1]' : 'text-gray-700 hover:bg-gray-50' %>">
+          <span>Ministries</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+
+        <div class="bg-white border-t border-gray-100">
+          <a
+            href="/ministries/dbw"
+            class="block px-6 py-3 transition <%= currentPath === '/ministries/dbw' ? 'text-[#6B46C1] bg-purple-50/60 font-medium' : 'text-gray-700 hover:bg-gray-50' %>"
+          >
+            Discipleship by the Word
+          </a>
+          <a
+            href="/ministries/bootcamp"
+            class="block px-6 py-3 transition border-t border-gray-50 <%= currentPath === '/ministries/bootcamp' ? 'text-[#6B46C1] bg-purple-50/60 font-medium' : 'text-gray-700 hover:bg-gray-50' %>"
+          >
+            Discipleship Bootcamp
+          </a>
+          <a
+            href="/ministries/arrows"
+            class="block px-6 py-3 transition border-t border-gray-50 <%= currentPath === '/ministries/arrows' ? 'text-[#6B46C1] bg-purple-50/60 font-medium' : 'text-gray-700 hover:bg-gray-50' %>"
+          >
+            Arrows in the Quiver
+          </a>
+        </div>
+      </details>
+
+      <% if (!isLoggedIn) { %>
+        <a
+          href="/hub"
+          class="mt-3 inline-flex w-full items-center justify-center bg-[#6B46C1] text-white px-6 py-3 rounded-full font-bold hover:bg-purple-700 transition shadow-md"
+        >
+          DBW HUB
+        </a>
+      <% } else { %>
+        <a
+          href="/hub"
+          class="mt-3 inline-flex w-full items-center justify-center rounded-full border border-gray-200 bg-white text-gray-800 px-6 py-3 font-bold hover:border-[#6B46C1] hover:text-[#6B46C1] transition"
+        >
+          <% if (currentUser && currentUser.name) { %>
+            <%= currentUser.name.split(' ')[0] %>'s Hub
+          <% } else { %>
+            My Hub
+          <% } %>
+        </a>
+
+        <% if (isAdmin) { %>
+          <a
+            href="/admin"
+            class="inline-flex w-full items-center justify-center bg-[#6B46C1] text-white px-6 py-3 rounded-full font-bold hover:bg-purple-700 transition shadow-md"
+          >
+            Admin Dashboard
+          </a>
+        <% } %>
+
+        <button
+          type="button"
+          id="mobile-logout-btn"
+          class="inline-flex w-full items-center justify-center rounded-full border border-red-200 bg-white text-red-600 px-6 py-3 font-bold hover:bg-red-50 transition"
+        >
+          Logout
+        </button>
+      <% } %>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+    const openIcon = document.getElementById("menu-open-icon");
+    const closeIcon = document.getElementById("menu-close-icon");
+
+    const desktopLogoutBtn = document.getElementById("desktop-logout-btn");
+    const mobileLogoutBtn = document.getElementById("mobile-logout-btn");
+
+    function openMenu() {
+      if (!menu || !openIcon || !closeIcon || !button) return;
+      menu.classList.remove("hidden");
+      openIcon.classList.add("hidden");
+      closeIcon.classList.remove("hidden");
+      button.setAttribute("aria-expanded", "true");
+    }
+
+    function closeMenu() {
+      if (!menu || !openIcon || !closeIcon || !button) return;
+      menu.classList.add("hidden");
+      openIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+      button.setAttribute("aria-expanded", "false");
+    }
+
+    if (button && menu && openIcon && closeIcon) {
+      button.addEventListener("click", function () {
+        if (menu.classList.contains("hidden")) {
+          openMenu();
+        } else {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener("click", function (event) {
+        const clickedInsideMenu = menu.contains(event.target);
+        const clickedButton = button.contains(event.target);
+
+        if (!menu.classList.contains("hidden") && !clickedInsideMenu && !clickedButton) {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 768) {
+          closeMenu();
+        }
+      });
+    }
+
+    async function handleLogout() {
+      try {
+        const response = await fetch("/auth/logout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "same-origin",
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.message || "Logout failed.");
+          return;
+        }
+
+        window.location.href = "/";
+      } catch (error) {
+        console.error("Logout error:", error);
+        alert("Something went wrong while logging out.");
+      }
+    }
+
+    if (desktopLogoutBtn) {
+      desktopLogoutBtn.addEventListener("click", handleLogout);
+    }
+
+    if (mobileLogoutBtn) {
+      mobileLogoutBtn.addEventListener("click", handleLogout);
+    }
+  });
+</script>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Course | Admin</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="bg-[#f7f7f8] text-gray-900">
+
+  <section class="py-10 px-6 md:px-12">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h1 class="text-4xl font-extrabold text-gray-950 mb-2">Edit Course</h1>
+          <p class="text-lg text-slate-600"><%= course.title %></p>
+        </div>
+
+        <a href="/admin/courses" class="rounded-2xl bg-white border border-gray-200 px-5 py-3 font-semibold text-gray-800 hover:border-[#6B46C1] hover:text-[#6B46C1] transition">
+          Back
+        </a>
+      </div>
+
+      <form action="/admin/courses/<%= course._id %>/update" method="POST" enctype="multipart/form-data" class="bg-white border border-gray-100 rounded-[28px] shadow-sm p-8 md:p-10 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Course Title</label>
+            <input name="title" type="text" value="<%= course.title %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5" required>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Slug</label>
+            <input name="slug" type="text" value="<%= course.slug %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Short Description</label>
+          <textarea name="description" rows="4" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5" required><%= course.description %></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Overview</label>
+          <textarea name="overview" rows="5" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5"><%= course.overview || "" %></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Duration</label>
+            <input name="duration" type="text" value="<%= course.duration %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Lessons</label>
+            <input name="lessons" type="text" value="<%= course.lessons %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Instructor</label>
+            <input name="instructor" type="text" value="<%= course.instructor %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Price</label>
+            <input name="price" type="text" value="<%= course.price || "" %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Replace Featured Image</label>
+          <input name="featuredImage" type="file" accept=".jpg,.jpeg,.png,.webp" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          <% if (course.featuredImage) { %>
+            <p class="text-sm text-slate-500 mt-2">Current: <%= course.featuredImage %></p>
+          <% } %>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Add More Course Documents</label>
+          <input name="courseDocuments" type="file" accept=".pdf,.doc,.docx" multiple class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          <% if (course.courseDocuments && course.courseDocuments.length) { %>
+            <div class="mt-3 space-y-2">
+              <% course.courseDocuments.forEach((doc) => { %>
+                <p class="text-sm text-slate-600">• <%= doc.originalName %></p>
+              <% }) %>
+            </div>
+          <% } %>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Add More Course Audios</label>
+          <input name="courseAudios" type="file" accept=".mp3,.wav,.mpeg,.ogg" multiple class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          <% if (course.courseAudios && course.courseAudios.length) { %>
+            <div class="mt-3 space-y-2">
+              <% course.courseAudios.forEach((audio) => { %>
+                <p class="text-sm text-slate-600">• <%= audio.originalName %></p>
+              <% }) %>
+            </div>
+          <% } %>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Replace Assignment Document</label>
+          <input name="assignmentDocument" type="file" accept=".pdf,.doc,.docx" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+          <% if (course.assignmentDocument && course.assignmentDocument.originalName) { %>
+            <p class="text-sm text-slate-500 mt-2">Current: <%= course.assignmentDocument.originalName %></p>
+          <% } %>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Button Text</label>
+          <input name="buttonText" type="text" value="<%= course.buttonText %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Button Class</label>
+          <input name="buttonClass" type="text" value="<%= course.buttonClass %>" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5">
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">What You Will Learn</label>
+          <textarea name="whatYouWillLearn" rows="5" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5"><%= (course.whatYouWillLearn || []).join('\n') %></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Modules</label>
+          <textarea name="modules" rows="5" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5"><%= (course.modules || []).map(module => `${module.title} | ${module.lessons}`).join('\n') %></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Requirements</label>
+          <textarea name="requirements" rows="4" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5"><%= (course.requirements || []).join('\n') %></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Audience</label>
+          <textarea name="audience" rows="4" class="w-full rounded-2xl border border-gray-200 px-4 py-3.5"><%= (course.audience || []).join('\n') %></textarea>
+        </div>
+
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Auto-calculated fields</h3>
+          <p class="text-sm text-slate-600 mb-2"><strong>Students:</strong> <%= course.studentsCount %></p>
+          <p class="text-sm text-slate-600"><strong>Average Rating:</strong> <%= course.averageRating %></p>
+        </div>
+
+        <div class="flex flex-wrap gap-6">
+          <label class="inline-flex items-center gap-3">
+            <input type="checkbox" name="isPublished" <%= course.isPublished ? "checked" : "" %>>
+            <span>Published</span>
+          </label>
+        </div>
+
+        <button type="submit" class="rounded-2xl bg-[#6B46C1] text-white px-8 py-4 font-semibold hover:bg-purple-700 transition">
+          Update Course
+        </button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+<%
+  const weeklyEvents = [
+    {
+      title: "Sunday Worship Service",
+      schedule: "Every Sunday, 9:00 AM & 11:00 AM",
+      location: "Main Sanctuary",
+      description: "Join us for powerful worship, biblical teaching, and fellowship."
+    },
+    {
+      title: "Wednesday Bible Study",
+      schedule: "Every Wednesday, 6:00 PM",
+      location: "Main Sanctuary",
+      description: "Deep dive into God's Word with practical application for daily living."
+    },
+    {
+      title: "Friday Prayer Meeting",
+      schedule: "Every Friday, 5:00 AM",
+      location: "Prayer Hall",
+      description: "Corporate prayer for breakthrough, revival, and intercession."
+    }
+  ];
+
+  const specialEvents = [
+    {
+      tag: "Special Service",
+      title: "New Year Revival Service",
+      description: "Start the year with a powerful encounter with God. Join us for worship, prayer, and prophetic declarations.",
+      date: "January 1, 2026",
+      time: "6:00 AM - 12:00 PM",
+      location: "Main Sanctuary",
+      image: "/images/event3.jpg"
+    },
+    {
+      tag: "Training",
+      title: "Discipleship Bootcamp Q1",
+      description: "Intensive three-day training in biblical foundations, spiritual disciplines, and ministry skills.",
+      date: "March 15-17, 2026",
+      time: "10:00 AM - 4:00 PM",
+      location: "Conference Center",
+      image: "/images/mission.jpg"
+    },
+    {
+      tag: "Youth Event",
+      title: "Youth Revival Night",
+      description: "A night of worship, powerful testimonies, and ministry specifically designed for young people.",
+      date: "March 20, 2026",
+      time: "6:00 PM - 10:00 PM",
+      location: "Youth Center",
+      image: "/images/hero2.jpg"
+    },
+    {
+      tag: "Outreach",
+      title: "Community Outreach",
+      description: "Reaching our community with the love of Christ through medical care, food distribution, and Gospel sharing.",
+      date: "March 25, 2026",
+      time: "8:00 AM - 2:00 PM",
+      location: "City Center",
+      image: "/images/hero1.jpg"
+    },
+    {
+      tag: "Special Service",
+      title: "Easter Celebration",
+      description: "Celebrate the resurrection of Jesus Christ with special worship, drama, and powerful preaching.",
+      date: "April 20, 2026",
+      time: "7:00 AM & 10:00 AM",
+      location: "Main Sanctuary",
+      image: "/images/event1.jpg"
+    },
+    {
+      tag: "Training",
+      title: "Discipleship Bootcamp Q2",
+      description: "Continue your discipleship journey with advanced biblical training and practical ministry experience.",
+      date: "June 10-12, 2026",
+      time: "10:00 AM - 4:00 PM",
+      location: "Conference Center",
+      image: "/images/hero2.jpg"
+    },
+    {
+      tag: "Conference",
+      title: "Mid-Year Conference",
+      description: "Four days of powerful teaching, worship, and impartation with guest speakers from around the world.",
+      date: "July 15-18, 2026",
+      time: "9:00 AM - 9:00 PM",
+      location: "Convention Center",
+      image: "/images/event2.jpg"
+    },
+    {
+      tag: "Training",
+      title: "Discipleship Bootcamp Q3",
+      description: "Deepen your understanding of God's Word and develop your leadership skills.",
+      date: "September 5-7, 2026",
+      time: "10:00 AM - 4:00 PM",
+      location: "Conference Center",
+      image: "/images/event3.jpg"
+    },
+    {
+      tag: "Special Service",
+      title: "Harvest Thanksgiving",
+      description: "Give thanks to God for His faithfulness with special offerings, testimonies, and celebration.",
+      date: "October 31, 2026",
+      time: "9:00 AM - 2:00 PM",
+      location: "Main Sanctuary",
+      image: "/images/event1.jpg"
+    },
+    {
+      tag: "Training",
+      title: "Discipleship Bootcamp Q4",
+      description: "Complete the year with final training modules and ministry commissioning.",
+      date: "December 1-3, 2026",
+      time: "10:00 AM - 4:00 PM",
+      location: "Conference Center",
+      image: "/images/mission.jpg"
+    },
+    {
+      tag: "Special Service",
+      title: "Christmas Celebration",
+      description: "Celebrate the birth of our Savior with special music, drama, and family-friendly activities.",
+      date: "December 25, 2026",
+      time: "8:00 AM & 10:30 AM",
+      location: "Main Sanctuary",
+      image: "/images/event1.jpg"
+    },
+    {
+      tag: "Special Service",
+      title: "Crossover Service",
+      description: "Cross into the new year with prayer, worship, and thanksgiving to God.",
+      date: "December 31, 2026",
+      time: "10:00 PM - 1:00 AM",
+      location: "Main Sanctuary",
+      image: "/images/hero2.jpg"
+    }
+  ];
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events | Town Crier</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="bg-[#f7f7f8] text-gray-900">
+
+  <%- include("partials/header") %>
+
+  <!-- CONNECT SUB NAV -->
+  <section class="border-b border-gray-200 bg-transparent">
+    <div class="max-w-7xl mx-auto px-6 md:px-16">
+      <div class="flex items-center gap-8 overflow-x-auto">
+        <a href="/events" class="inline-flex h-14 items-center border-b-2 border-[#4F46E5] text-[#4F46E5] font-semibold whitespace-nowrap">
+          Events
+        </a>
+        <a href="/contact" class="inline-flex h-14 items-center border-b-2 border-transparent text-gray-700 font-medium hover:text-[#4F46E5] whitespace-nowrap transition">
+          Contact
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE INTRO -->
+  <section class="pt-10 md:pt-14 pb-14 md:pb-16">
+    <div class="max-w-7xl mx-auto px-6 md:px-16">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-950 mb-5">
+          Ministry Events 2026
+        </h1>
+        <p class="text-lg md:text-2xl text-slate-600 max-w-4xl mx-auto">
+          Mark your calendars and join us for these transformative gatherings
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEEKLY EVENTS -->
+  <section class="pb-14 md:pb-16">
+    <div class="max-w-7xl mx-auto px-6 md:px-16">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-gray-950 mb-8">
+        Weekly Events
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <% weeklyEvents.forEach((event) => { %>
+          <article class="rounded-[24px] border border-indigo-100 bg-indigo-50/70 p-7 md:p-8 shadow-sm">
+            <h3 class="text-2xl font-extrabold text-gray-950 mb-5">
+              <%= event.title %>
+            </h3>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-start gap-3 text-slate-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+                <span class="text-lg"><%= event.schedule %></span>
+              </div>
+
+              <div class="flex items-start gap-3 text-slate-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <span class="text-lg"><%= event.location %></span>
+              </div>
+            </div>
+
+            <p class="text-lg leading-relaxed text-slate-700">
+              <%= event.description %>
+            </p>
+          </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIAL EVENTS -->
+  <section class="pb-20 md:pb-24">
+    <div class="max-w-7xl mx-auto px-6 md:px-16">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-gray-950 mb-8">
+        Special Events
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <% specialEvents.forEach((event) => { %>
+          <article class="overflow-hidden rounded-[24px] border border-indigo-100 bg-white shadow-sm hover:-translate-y-1 transition duration-300">
+            <div class="h-64 overflow-hidden">
+              <img
+                src="<%= event.image %>"
+                alt="<%= event.title %>"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <div class="p-6 md:p-7">
+              <span class="inline-flex rounded-full bg-indigo-100 text-[#4F46E5] px-4 py-1.5 text-sm font-medium mb-5">
+                <%= event.tag %>
+              </span>
+
+              <h3 class="text-2xl font-extrabold text-gray-950 mb-4 leading-snug">
+                <%= event.title %>
+              </h3>
+
+              <p class="text-lg leading-relaxed text-slate-700 mb-6">
+                <%= event.description %>
+              </p>
+
+              <div class="space-y-3 text-slate-700">
+                <div class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m-11 9h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v11a2 2 0 002 2z"/>
+                  </svg>
+                  <span class="text-lg"><%= event.date %></span>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                  </svg>
+                  <span class="text-lg"><%= event.time %></span>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  <span class="text-lg"><%= event.location %></span>
+                </div>
+              </div>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <%- include("partials/footer") %>
+
+</body>
+</html>

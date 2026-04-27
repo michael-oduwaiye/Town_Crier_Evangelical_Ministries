@@ -1,0 +1,176 @@
+<div
+  id="auth-modal"
+  class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/45 px-4"
+>
+  <div
+    id="auth-modal-panel"
+    class="relative w-full max-w-[450px] rounded-[28px] bg-white p-8 md:p-10 shadow-2xl"
+  >
+    <button
+      type="button"
+      id="auth-modal-close"
+      class="absolute right-6 top-6 text-2xl text-slate-400 hover:text-slate-700 transition"
+      aria-label="Close modal"
+    >
+      ×
+    </button>
+
+    <!-- LOGIN VIEW -->
+    <div id="login-view">
+      <h2 class="text-4xl font-extrabold text-gray-950 mb-8">
+        Welcome to DBW HUB
+      </h2>
+
+      <div
+        id="login-error"
+        class="hidden mb-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+      ></div>
+
+      <form id="login-form" class="space-y-6">
+        <div>
+          <label for="login-email" class="block text-sm font-semibold text-gray-800 mb-3">
+            Email Address
+          </label>
+          <input
+            id="login-email"
+            name="email"
+            type="email"
+            placeholder="your@email.com"
+            class="w-full rounded-2xl border border-gray-200 px-5 py-4 text-lg outline-none focus:border-[#6B46C1] focus:ring-2 focus:ring-purple-100 transition"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="login-password" class="block text-sm font-semibold text-gray-800 mb-3">
+            Password
+          </label>
+          <input
+            id="login-password"
+            name="password"
+            type="password"
+            placeholder="••••••••"
+            class="w-full rounded-2xl border border-gray-200 px-5 py-4 text-lg outline-none focus:border-[#6B46C1] focus:ring-2 focus:ring-purple-100 transition"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="login-submit-btn"
+          class="w-full rounded-2xl bg-gradient-to-r from-[#4F46E5] to-[#C026D3] px-6 py-4 text-xl font-semibold text-white shadow-sm hover:opacity-95 transition"
+        >
+          Sign In
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-lg text-slate-600">
+        Don't have an account?
+        <button
+          type="button"
+          id="switch-to-register"
+          class="font-semibold text-[#4F46E5] hover:text-[#6B46C1] transition"
+        >
+          Register Now
+        </button>
+      </p>
+    </div>
+
+    <!-- REGISTER VIEW -->
+    <div id="register-view" class="hidden">
+      <h2 id="register-title" class="text-4xl font-extrabold text-gray-950 mb-3">
+        Register Now
+      </h2>
+
+      <p id="register-subtitle" class="text-base text-slate-600 mb-6 hidden"></p>
+
+      <div
+        id="register-error"
+        class="hidden mb-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+      ></div>
+
+      <div
+        id="register-success"
+        class="hidden mb-4 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
+      ></div>
+
+      <form id="register-form" class="space-y-5">
+        <input type="hidden" id="registration-target" name="registrationTarget" />
+
+        <div>
+          <label for="register-name" class="block text-sm font-semibold text-gray-800 mb-3">
+            Full Name
+          </label>
+          <input
+            id="register-name"
+            name="name"
+            type="text"
+            placeholder="Enter your full name"
+            class="w-full rounded-2xl border border-gray-200 px-5 py-4 text-lg outline-none focus:border-[#6B46C1] focus:ring-2 focus:ring-purple-100 transition"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="register-email" class="block text-sm font-semibold text-gray-800 mb-3">
+            Email Address
+          </label>
+          <input
+            id="register-email"
+            name="email"
+            type="email"
+            placeholder="your@email.com"
+            class="w-full rounded-2xl border border-gray-200 px-5 py-4 text-lg outline-none focus:border-[#6B46C1] focus:ring-2 focus:ring-purple-100 transition"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="register-password" class="block text-sm font-semibold text-gray-800 mb-3">
+            Password
+          </label>
+          <input
+            id="register-password"
+            name="password"
+            type="password"
+            placeholder="Create password"
+            class="w-full rounded-2xl border border-gray-200 px-5 py-4 text-lg outline-none focus:border-[#6B46C1] focus:ring-2 focus:ring-purple-100 transition"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="register-confirm-password" class="block text-sm font-semibold text-gray-800 mb-3">
+            Confirm Password
+          </label>
+          <input
+            id="register-confirm-password"
+            type="password"
+            placeholder="Confirm password"
+            class="w-full rounded-2xl border border-gray-200 px-5 py-4 text-lg outline-none focus:border-[#6B46C1] focus:ring-2 focus:ring-purple-100 transition"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="register-submit-btn"
+          class="w-full rounded-2xl bg-gradient-to-r from-[#4F46E5] to-[#C026D3] px-6 py-4 text-xl font-semibold text-white shadow-sm hover:opacity-95 transition"
+        >
+          Register
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-lg text-slate-600">
+        Already have an account?
+        <button
+          type="button"
+          id="switch-to-login"
+          class="font-semibold text-[#4F46E5] hover:text-[#6B46C1] transition"
+        >
+          Sign In
+        </button>
+      </p>
+    </div>
+  </div>
+</div>

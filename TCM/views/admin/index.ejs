@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Town Crier</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="bg-[#f7f7f8] text-gray-900">
+
+  <section class="py-10 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-950 mb-3">
+          Admin Dashboard
+        </h1>
+        <p class="text-lg text-slate-600">
+          Manage registrations, contact messages, and prayer requests.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <a href="/admin/registrations" class="bg-white border border-gray-100 rounded-[24px] shadow-sm p-8 block hover:shadow-md transition">
+          <h2 class="text-2xl font-extrabold text-gray-950 mb-3">Registrations</h2>
+          <p class="text-4xl font-extrabold text-[#6B46C1]"><%= registrationCount %></p>
+        </a>
+
+        <a href="/admin/contact-messages" class="bg-white border border-gray-100 rounded-[24px] shadow-sm p-8 block hover:shadow-md transition">
+          <h2 class="text-2xl font-extrabold text-gray-950 mb-3">Contact Messages</h2>
+          <p class="text-4xl font-extrabold text-[#6B46C1]"><%= contactCount %></p>
+        </a>
+
+        <a href="/admin/prayer-requests" class="bg-white border border-gray-100 rounded-[24px] shadow-sm p-8 block hover:shadow-md transition">
+          <h2 class="text-2xl font-extrabold text-gray-950 mb-3">Prayer Requests</h2>
+          <p class="text-4xl font-extrabold text-[#6B46C1]"><%= prayerCount %></p>
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="/admin/registrations" class="rounded-2xl bg-[#6B46C1] text-white px-6 py-3 font-semibold hover:bg-purple-700 transition">
+          View Registrations
+        </a>
+        <a href="/admin/contact-messages" class="rounded-2xl bg-[#6B46C1] text-white px-6 py-3 font-semibold hover:bg-purple-700 transition">
+          View Messages
+        </a>
+        <a href="/admin/prayer-requests" class="rounded-2xl bg-[#6B46C1] text-white px-6 py-3 font-semibold hover:bg-purple-700 transition">
+          View Prayer Requests
+        </a>
+        <a href="/admin/courses" class="rounded-2xl bg-[#6B46C1] text-white px-6 py-3 font-semibold hover:bg-purple-700 transition">
+  Manage Courses
+</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
